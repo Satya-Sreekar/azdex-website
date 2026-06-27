@@ -1,6 +1,11 @@
 .nav {
-  position: sticky;
+  /* fixed, not sticky: html/body have overflow-x:clip, which breaks position:sticky
+     on iOS Safari (navbar scrolls away with the hero). fixed is immune. main reserves
+     the navbar height below. */
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: rgba(250, 248, 243, 0.82);
   backdrop-filter: saturate(180%) blur(14px);

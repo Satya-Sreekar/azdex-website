@@ -43,7 +43,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer__col">
+        <div className="footer__col footer__col--wide">
           <span className="footer__col-label">Markets</span>
           <ul>
             <li>India</li>
