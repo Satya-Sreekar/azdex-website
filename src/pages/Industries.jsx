@@ -20,9 +20,7 @@ const iconFor = {
 export default function Industries() {
   return (
     <>
-      <PageHero
-        eyebrow="Industries We Supply"
-        title="Industries We Supply"
+      <PageHero        title="Industries We Supply"
         subtitle="AZDEX supports industrial buyers across sectors where material quality, specification fit and supply responsiveness matter."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Industries' }]}
       >
@@ -33,9 +31,7 @@ export default function Industries() {
 
       <section className="section">
         <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">By Application</span>
-            <h2>Recognise your use case</h2>
+          <Reveal className="section-head">            <h2>Recognise your use case</h2>
             <p>
               Our core product range is aligned with manufacturing and process industries that
               require commercially practical sourcing, documentation clarity and reliable
@@ -69,7 +65,7 @@ export default function Industries() {
       <section className="section section--soft">
         <div className="container">
           <div className="cta-band">
-            <h2>Need the right product for your industry?</h2>
+            <h2>Need the right product for your <em>industry?</em></h2>
             <p>Send us your requirement and our team will review the most suitable supply option.</p>
             <Link to="/contact" className="btn btn-primary btn-lg">
               Request a Quote <ArrowRight />

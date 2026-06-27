@@ -20,81 +20,81 @@
   overflow: hidden;
   background: var(--navy-900);
   color: #fff;
-  padding: 130px 0 0;
+  /* Fill the viewport below the sticky 84px navbar (72px on small screens) so the
+     content can sit vertically centered with the ticker pinned to the bottom edge. */
+  min-height: calc(100svh - 84px);
+  display: flex;
+  flex-direction: column;
 }
 .hero__bg { position: absolute; inset: 0; pointer-events: none; }
-.hero__grid {
+
+/* React Bits Lightfall layer (restrained tuning). z-index:0 establishes a stacking
+   context so the WebGL canvas stays behind .hero__inner (z-index:1). The mask keeps
+   the sparse gold streaks a top-down accent that fades out before the ticker, and the
+   low opacity keeps them a whisper so the headline clearly leads. */
+.hero__lightfall {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 90% 80% at 30% 10%, #000 30%, transparent 78%);
-}
-.hero__aurora {
-  position: absolute;
-  top: -240px;
-  right: -160px;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(242, 184, 41, 0.16), transparent 60%);
-  filter: blur(20px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.36;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 90%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 90%);
 }
 
-/* Oversized brand mark — ~3/4 visible, only a quarter cropped off the right.
+/* Oversized brand mark: ~60% visible, the rest cropped off the right.
    Height is viewport-relative (capped) so the full circle always fits
    vertically and the top/bottom petals are never clipped. The left edge
    fades out so the portion behind the headline stays subtle. */
 .hero__mark {
   position: absolute;
-  top: 44%;
-  right: 0;
-  height: clamp(280px, 48vh, 470px);
+  top: 46%;
+  right: 3%;
+  height: clamp(240px, 42vh, 430px);
   width: auto;
   aspect-ratio: 434 / 392;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   opacity: 0;
-  transform: translate(40%, -50%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 42%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 42%);
+  transform: translateY(-50%);
+  /* Blend the mark's light into the scene (not a solid graphic on top) and feather every
+     edge with a radial mask, so there is no perceptible image boundary or crop line — the
+     sunburst reads as ambient light in the hero rather than a floating object. */
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0, 0, 0, 0.5) 52%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0, 0, 0, 0.5) 52%, transparent 72%);
   animation: heroMarkIn 1.6s var(--ease) 0.35s forwards;
 }
 .hero__mark-img {
   width: 100%;
   height: 100%;
   display: block;
-  filter: drop-shadow(0 0 50px rgba(242, 184, 41, 0.14));
+  filter: blur(0.7px) drop-shadow(0 0 60px rgba(242, 184, 41, 0.2));
 }
 @keyframes heroMarkIn {
-  from { opacity: 0; transform: translate(44%, -50%) scale(0.96); }
-  to { opacity: 0.4; transform: translate(40%, -50%) scale(1); }
+  from { opacity: 0; transform: translateY(-50%) scale(0.96); }
+  to { opacity: 0.45; transform: translateY(-50%) scale(1); }
 }
 
-.hero__inner { position: relative; z-index: 1; padding-bottom: 70px; }
-
-.hero__kicker-row {
+/* Grow to fill the space between navbar and ticker, then center the content
+   block within it. Vertical padding only (longhand) so the container's
+   horizontal gutter is left intact. */
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
   display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-bottom: 34px;
-}
-.hero__est {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  color: #6b7c9c;
-  padding-left: 18px;
-  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 56px;
+  padding-bottom: 64px;
 }
 
 .hero__title {
   color: #fff;
   font-weight: 400;
   font-size: clamp(2.7rem, 7.2vw, 6.4rem);
-  line-height: 0.98;
+  line-height: 1.04;
   letter-spacing: -0.025em;
   margin: 0;
   max-width: 15ch;
@@ -115,7 +115,8 @@
 .hero__trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  justify-content: space-between; /* spread the 01–04 items edge-to-edge across the row */
+  gap: 22px 30px;
   margin-top: 54px;
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -178,6 +179,28 @@
 }
 .positioning__lead .hl { color: var(--brass); font-style: italic; }
 
+.positioning__proof {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: 0 0 26px;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--rule);
+}
+.positioning__proof li {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.positioning__proof strong {
+  color: var(--ink);
+  font-weight: 500;
+  margin-left: 6px;
+}
+
 .positioning__stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -203,6 +226,24 @@
   color: var(--muted);
   margin-top: 12px;
 }
+.stat--cta { background: var(--navy-800); padding: 0; }
+.stat__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 100%;
+  padding: 30px 26px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  transition: background 0.3s var(--ease);
+}
+.stat__cta svg { width: 18px; height: 18px; transition: transform 0.3s var(--ease); }
+.stat__cta:hover { background: var(--navy-700); }
+.stat__cta:hover svg { transform: translate(3px, -3px); }
 
 /* ============ PRODUCTS INDEX ============ */
 .pindex-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; max-width: none; }
@@ -310,7 +351,7 @@
   position: absolute;
   top: -150px; left: -120px;
   width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(242, 184, 41, 0.1), transparent 65%);
+  background: radial-gradient(circle, rgba(242, 184, 41, 0.055), transparent 68%);
 }
 .why__inner { position: relative; z-index: 1; }
 .why__bento {
@@ -338,6 +379,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 18px;
 }
+/* The StaggerItem wrapper around each SpotlightCard tile: let the tile stretch
+   to fill the grid cell so rows stay equal-height (as before the wrap). */
+.why__tiles > * { display: flex; }
+.why__tiles > * > .why__tile { flex: 1; }
 .why__tile {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -420,6 +465,9 @@
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
   .hero__mark { display: none; }
+  /* Once the long labels start to wrap, left-align so wrapped lines don't get
+     awkward edge-to-edge gaps from space-between. */
+  .hero__trust { justify-content: flex-start; gap: 18px 26px; }
   .positioning__grid { grid-template-columns: 1fr; gap: 48px; }
   .ledger { grid-template-columns: repeat(2, 1fr); }
   .why__feature { grid-column: span 12; }
@@ -428,8 +476,38 @@
   .rfq__grid { grid-template-columns: 1fr; gap: 44px; }
 }
 @media (max-width: 680px) {
-  .hero { padding-top: 104px; }
-  .hero__title { font-size: clamp(2.5rem, 12vw, 3.6rem); }
+  /* Content is taller than the viewport here, so centering it inside the 100svh
+     hero clips both ends (kicker off the top, trust row off the bottom). Top-align
+     and let the hero grow naturally instead. */
+  .hero__inner { justify-content: center; padding-top: 48px; padding-bottom: 40px; }
+  /* line-height ≥1.14 so the italic descender in "buyers." clears the reveal
+     mask's clip box (overflow:hidden + 0.22em pad in RevealHeading). */
+  .hero__title { font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 1.14; }
+  .hero__sub { margin-top: 20px; }
+  /* Smaller + dimmer so the title leads; still comfortably readable. */
+  .hero__sub p { font-size: 0.92rem; line-height: 1.6; color: #94a3bd; }
+  /* Inline, equal-width buttons (flex:1 splits the row evenly); trimmed padding/text
+     so the longer "Request a Quote" label still fits without clipping. */
+  .hero__actions { gap: 12px; margin-top: 28px; }
+  .hero__actions .btn-lg { flex: 1 1 0; padding: 15px 14px; font-size: 0.68rem; letter-spacing: 0.06em; }
+  /* 2×2 stat grid: gold number stacked over its label so cells keep even height
+     even when a label wraps ("Documentation Support"). Reads as a deliberate
+     feature strip instead of ragged wrapped text. */
+  .hero__trust {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 16px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+  .hero__trust-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+  .hero__trust-no { font-size: 0.82rem; font-weight: 600; }
   .pindex-head { flex-direction: column; align-items: flex-start; gap: 18px; }
   .pindex__row { grid-template-columns: auto 1fr; gap: 14px 18px; padding: 26px 0; }
   .pindex__row:hover { padding-left: 0; padding-right: 0; background: transparent; }
@@ -443,4 +521,8 @@
   .ticker__item { font-size: 1.2rem; }
   .rfq__form { padding: 26px; }
   .positioning__stats { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  /* Navbar shrinks to 72px here, so match the hero's viewport-fill offset. */
+  .hero { min-height: calc(100svh - 72px); }
 }

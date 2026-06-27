@@ -15,7 +15,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
 
   const onSubmit = (e) => {
     e.preventDefault()
-    // No backend in this build — capture intent and confirm to the user.
+    // No backend in this build; capture intent and confirm to the user.
     // A production deployment would POST these values to an enquiry endpoint.
     setSubmitted(true)
   }
@@ -24,7 +24,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
     return (
       <div className="enquiry-form enquiry-form--done">
         <span className="enquiry-form__done-icon"><CheckCircle /></span>
-        <h3>Thank you — your enquiry has been received.</h3>
+        <h3>Thank you. Your enquiry has been received.</h3>
         <p>
           Our team will review your requirement and respond with the most practical supply option
           available. For a faster response you can also email{' '}

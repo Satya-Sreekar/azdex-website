@@ -3,7 +3,7 @@ import { Reveal, RevealHeading } from './motion.jsx'
 import './PageHero.css'
 
 // Reusable editorial hero for interior pages.
-// `crumbs` = array of { label, to? } — last item renders as current.
+// `crumbs` = array of { label, to? }; last item renders as current.
 export default function PageHero({ eyebrow, title, subtitle, crumbs = [], children, formula, index }) {
   return (
     <section className="page-hero">

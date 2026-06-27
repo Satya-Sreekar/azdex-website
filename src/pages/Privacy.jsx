@@ -5,9 +5,7 @@ import './pages.css'
 export default function Privacy() {
   return (
     <>
-      <PageHero
-        eyebrow="Legal"
-        title="Privacy Policy"
+      <PageHero        title="Privacy Policy"
         subtitle="How AZDEX handles the information you share through enquiries and communication."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Privacy Policy' }]}
       />
@@ -47,8 +45,8 @@ export default function Privacy() {
           <h2>Data sharing</h2>
           <p>
             We do not sell your personal information. Information may be shared only as needed to
-            respond to your enquiry — for example with sourcing or logistics partners involved in
-            fulfilling a specific requirement — or where required by applicable law.
+            respond to your enquiry, for example with sourcing or logistics partners involved in
+            fulfilling a specific requirement, or where required by applicable law.
           </p>
 
           <h2>Data retention &amp; security</h2>

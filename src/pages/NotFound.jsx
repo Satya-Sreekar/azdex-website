@@ -5,9 +5,7 @@ import './pages.css'
 export default function NotFound() {
   return (
     <section className="section" style={{ paddingTop: 120, paddingBottom: 120, textAlign: 'center' }}>
-      <div className="container">
-        <span className="eyebrow" style={{ justifyContent: 'center' }}>Error 404</span>
-        <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}>Page not found</h1>
+      <div className="container">        <h1 style={{ fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}>Page not found</h1>
         <p className="lead" style={{ maxWidth: 520, margin: '0 auto 28px' }}>
           The page you're looking for doesn't exist or may have moved. Let's get you back to
           sourcing industrial raw materials.

@@ -1,18 +1,18 @@
 /* ============================================================
-   AZDEX Chemicals — Editorial Design System
+   AZDEX Chemicals : Editorial Design System
    Navy #16294F · Gold #F2B829 · warm ivory paper
    Type: Fraunces (display) / Inter (body) / JetBrains Mono (labels)
    ============================================================ */
 
 :root {
-  /* Brand — navy */
+  /* Brand: navy */
   --navy-900: #0b1426;
   --navy-800: #0f1d3a;
   --navy-700: #16294f;
   --navy-600: #20386b;
   --navy-500: #2d4d8f;
 
-  /* Brand — gold / brass */
+  /* Brand: gold / brass */
   --gold-500: #f2b829;
   --gold-400: #f7c84f;
   --gold-300: #fadd91;
@@ -26,7 +26,7 @@
   --rule: rgba(18, 33, 60, 0.12);
   --rule-strong: rgba(18, 33, 60, 0.22);
 
-  /* Surfaces — warm ivory */
+  /* Surfaces: warm ivory */
   --paper: #faf8f3;
   --paper-2: #f1ede4;
   --paper-3: #ebe6da;
@@ -64,6 +64,33 @@
 }
 
 * { box-sizing: border-box; }
+
+/* ---- App-like interaction model ---------------------------------------------
+   The site should feel like a product, not a document: no text selection and no
+   I-beam over content anywhere. Real form fields opt back in below so they stay
+   editable, and anything clickable shows a pointer cursor. */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+html { cursor: default; }
+
+a, button, label, summary, select,
+[role="button"], [role="link"], [role="tab"], [role="menuitem"],
+input[type="button"], input[type="submit"], input[type="reset"],
+input[type="checkbox"], input[type="radio"], input[type="file"] {
+  cursor: pointer;
+}
+:disabled, [aria-disabled="true"] { cursor: not-allowed; }
+
+/* Form fields must remain selectable and show the text caret to stay usable. */
+input, textarea, select, [contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+input, textarea { cursor: text; }
 
 html {
   scroll-behavior: smooth;
@@ -134,7 +161,7 @@ p { margin: 0 0 1rem; }
 }
 .section--navy h1, .section--navy h2, .section--navy h3 { color: #fff; }
 
-/* ---------- Kicker (mono label) — replaces old eyebrow ---------- */
+/* ---------- Kicker (mono label) replaces old eyebrow ---------- */
 .eyebrow, .kicker {
   display: inline-flex;
   align-items: center;

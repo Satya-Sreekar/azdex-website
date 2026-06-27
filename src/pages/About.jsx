@@ -16,7 +16,7 @@ const whatWeSupply = [
 ]
 
 const steps = [
-  { title: 'Start with the requirement', text: 'Product, grade, quantity, destination and timeline — we begin with what you actually need.' },
+  { title: 'Start with the requirement', text: 'We begin with what you actually need: product, grade, quantity, destination and timeline.' },
   { title: 'Review specification fit', text: 'We assess specification fit against your process and downstream application.' },
   { title: 'Assess sourcing options', text: 'We evaluate practical sourcing options and confirm documentation requirements.' },
   { title: 'Support through supply', text: 'We support the enquiry through quotation and supply coordination.' },
@@ -32,9 +32,7 @@ const expectations = [
 export default function About() {
   return (
     <>
-      <PageHero
-        eyebrow="About AZDEX"
-        title="Industrial Commodities & Raw Materials"
+      <PageHero        title="Industrial Commodities & Raw Materials"
         subtitle="Connecting global supply with industrial buyers across India and selected international markets."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'About Us' }]}
       >
@@ -47,9 +45,7 @@ export default function About() {
       {/* Introduction */}
       <section className="section">
         <div className="container intro-split">
-          <div>
-            <span className="eyebrow">Who We Are</span>
-            <h2>An industrial supply partner, built around execution</h2>
+          <div>            <h2>An industrial supply partner, built around execution</h2>
             <p className="lead">
               AZDEX is an industrial commodities and raw materials supplier focused on serving
               manufacturers, traders, distributors and bulk buyers. We work across product categories
@@ -84,9 +80,7 @@ export default function About() {
       {/* Who we serve */}
       <section className="section section--soft">
         <div className="container">
-          <div className="section-head center">
-            <span className="eyebrow">Who We Serve</span>
-            <h2>Built for industrial buyers</h2>
+          <div className="section-head center">            <h2>Built for industrial buyers</h2>
             <p>
               We work with manufacturers, processors, traders, distributors, procurement teams and
               bulk industrial buyers who require commercially viable supply options backed by clear
@@ -112,12 +106,10 @@ export default function About() {
       {/* How we work */}
       <section className="section">
         <div className="container">
-          <div className="section-head">
-            <span className="eyebrow">How We Work</span>
-            <h2>From requirement to supply coordination</h2>
+          <div className="section-head">            <h2>From requirement to supply coordination</h2>
             <p>
               We begin with the requirement and work through specification fit, sourcing, documentation
-              and supply coordination — keeping communication clear at every step.
+              and supply coordination, keeping communication clear at every step.
             </p>
           </div>
           <Stagger className="steps">
@@ -137,9 +129,7 @@ export default function About() {
       {/* Buyer expectations */}
       <section className="section section--soft">
         <div className="container">
-          <div className="section-head center">
-            <span className="eyebrow">Buyer Expectations</span>
-            <h2>What you can expect from AZDEX</h2>
+          <div className="section-head center">            <h2>What you can expect from AZDEX</h2>
           </div>
           <div className="chip-strip" style={{ justifyContent: 'center' }}>
             {expectations.map((e) => (
@@ -153,7 +143,7 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div className="cta-band">
-            <h2>Let's discuss your requirement</h2>
+            <h2>Let's discuss your <em>requirement</em></h2>
             <p>
               Share your product, grade, quantity and destination, and our team will review the most
               practical supply option available.

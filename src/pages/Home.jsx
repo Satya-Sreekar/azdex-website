@@ -10,19 +10,26 @@ import {
 import {
   Reveal, RevealHeading, Stagger, StaggerItem, CountUp, Marquee, Magnetic,
 } from '../components/motion.jsx'
+import Lightfall from '../components/reactbits/Lightfall.jsx'
+import ShinyText from '../components/reactbits/ShinyText.jsx'
+import SpotlightCard from '../components/reactbits/SpotlightCard.jsx'
 import './Home.css'
 
 const trust = ['Bulk Supply', 'Industrial Grades', 'Documentation Support', 'India & International']
+
+// Gold/brass palette so the falling streaks read as a brand accent on the navy hero.
+// Module-scope constant keeps the array reference stable across renders, so Lightfall's
+// effect doesn't tear down and rebuild the WebGL context.
+const lightfallColors = ['#f7c84f', '#f2b829', '#fadd91']
 
 const stats = [
   { to: 5, suffix: '', label: 'Core raw materials' },
   { to: 7, suffix: '+', label: 'Industries supplied' },
   { to: 4, suffix: '', label: 'Markets served' },
-  { to: 100, suffix: '%', label: 'Documentation support' },
 ]
 
 const why = [
-  { icon: Search, title: 'Clear Specifications', text: 'Source the right material with grade clarity and commercial documentation — not generic quotations.' },
+  { icon: Search, title: 'Clear Specifications', text: 'Source the right material with grade clarity and commercial documentation, not generic quotations.' },
   { icon: Handshake, title: 'Commercial Responsiveness', text: 'Practical supply options for routine and urgent requirements alike.' },
   { icon: MapPin, title: 'Origin Visibility', text: 'Market-aware sourcing with origin and documentation clarity.' },
   { icon: Layers, title: 'Responsive Trade Support', text: 'A focused team supporting the enquiry from quotation to coordination.' },
@@ -35,8 +42,25 @@ export default function Home() {
       {/* ================= HERO ================= */}
       <section className="hero">
         <div className="hero__bg" aria-hidden="true">
-          <span className="hero__grid" />
-          <span className="hero__aurora" />
+          {!reduce && (
+            <div className="hero__lightfall">
+              <Lightfall
+                colors={lightfallColors}
+                backgroundColor="#16294f"
+                speed={0.5}
+                streakCount={2}
+                streakWidth={0.9}
+                streakLength={1.2}
+                glow={0.8}
+                density={0.5}
+                twinkle={0.6}
+                zoom={2.6}
+                backgroundGlow={0.4}
+                opacity={1}
+                mouseInteraction={false}
+              />
+            </div>
+          )}
         </div>
 
         {/* Oversized brand mark, half-cropped off the right edge */}
@@ -51,27 +75,20 @@ export default function Home() {
         </div>
 
         <div className="container hero__inner">
-          <Reveal mount as="div" className="hero__kicker-row">
-            <span className="kicker" style={{ color: 'var(--gold-400)', margin: 0 }}>
-              Industrial Commodities &amp; Raw Materials
-            </span>
-            <span className="hero__est">EST. INDIA · GLOBAL SUPPLY</span>
-          </Reveal>
-
           <RevealHeading
             mount
             className="hero__title"
             delay={0.05}
             lines={[
               <>Connecting global supply</>,
-              <>with <em>industrial buyers.</em></>,
+              <>with <em><ShinyText text="industrial buyers." color="#f7c84f" shineColor="#fff4cf" speed={4.5} delay={1.2} spread={70} /></em></>,
             ]}
           />
 
           <Reveal mount delay={0.35} className="hero__sub">
             <p>
               Technical Grade Urea, Soda Ash, Caustic Soda, PVC Resin, Melamine and industrial raw
-              materials — supplied to manufacturers, traders and distributors across India and
+              materials, supplied to manufacturers, traders and distributors across India and
               international markets.
             </p>
           </Reveal>
@@ -112,13 +129,16 @@ export default function Home() {
       <section className="section positioning">
         <div className="container">
           <div className="positioning__grid">
-            <Reveal className="positioning__statement">
-              <span className="kicker">Who We Are</span>
-              <p className="positioning__lead">
+            <Reveal className="positioning__statement">              <p className="positioning__lead">
                 AZDEX is an industrial commodities supplier built around{' '}
-                <span className="hl">execution</span> — connecting global supply with industrial
+                <span className="hl">execution</span>. We connect global supply with industrial
                 buyers through practical sourcing, clear documentation and responsive trade support.
               </p>
+              <ul className="positioning__proof">
+                <li>Technical Urea <strong>46% min N</strong></li>
+                <li>Caustic Soda <strong>IS 252:2013</strong></li>
+                <li>Soda Ash <strong>dense / light</strong></li>
+              </ul>
               <Link to="/about" className="link-arrow">
                 More about AZDEX <ArrowRight />
               </Link>
@@ -133,6 +153,11 @@ export default function Home() {
                   <div className="stat__label">{s.label}</div>
                 </StaggerItem>
               ))}
+              <StaggerItem className="stat stat--cta">
+                <Link to="/contact" className="stat__cta">
+                  Request a quote <ArrowUpRight />
+                </Link>
+              </StaggerItem>
             </Stagger>
           </div>
         </div>
@@ -142,9 +167,7 @@ export default function Home() {
       <section className="section section--soft pindex-section">
         <div className="container">
           <div className="section-head pindex-head">
-            <div>
-              <span className="kicker">Featured Products</span>
-              <h2>Core industrial<br />raw materials</h2>
+            <div>              <h2>Core industrial<br />raw materials</h2>
             </div>
             <p>
               Explore the AZDEX product range, with dedicated pages for specifications, applications,
@@ -173,9 +196,7 @@ export default function Home() {
       {/* ================= INDUSTRIES LEDGER ================= */}
       <section className="section industries-section">
         <div className="container">
-          <div className="section-head">
-            <span className="kicker">Industries We Supply</span>
-            <h2>Built around your application</h2>
+          <div className="section-head">            <h2>Built around your application</h2>
             <p>
               Manufacturers, processors, traders and distributors across sectors where material
               quality, documentation and supply responsiveness matter.
@@ -203,19 +224,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= WHY — BENTO ================= */}
+      {/* ================= WHY / BENTO ================= */}
       <section className="section section--navy why">
         <div className="why__glow" aria-hidden="true" />
         <div className="container why__inner">
           <div className="why__bento">
-            <Reveal className="why__feature">
-              <span className="kicker">Why AZDEX</span>
-              <h2 className="why__feature-title">
+            <Reveal className="why__feature">              <h2 className="why__feature-title">
                 Why buyers work<br />with <em>AZDEX.</em>
               </h2>
               <p>
                 We help industrial buyers source the right material with clear specifications,
-                commercial documentation, origin visibility and responsive trade support — whether
+                commercial documentation, origin visibility and responsive trade support, whether
                 the requirement is routine or urgent.
               </p>
               <Link to="/about" className="btn btn-ghost-light">Our approach</Link>
@@ -223,13 +242,15 @@ export default function Home() {
 
             <Stagger className="why__tiles">
               {why.map((w, i) => (
-                <StaggerItem key={w.title} className="why__tile" y={18}>
-                  <div className="why__tile-top">
-                    <span className="why__tile-icon"><w.icon /></span>
-                    <span className="why__tile-no">0{i + 1}</span>
-                  </div>
-                  <h3>{w.title}</h3>
-                  <p>{w.text}</p>
+                <StaggerItem key={w.title} y={18}>
+                  <SpotlightCard className="why__tile" spotlightColor="rgba(242, 184, 41, 0.16)">
+                    <div className="why__tile-top">
+                      <span className="why__tile-icon"><w.icon /></span>
+                      <span className="why__tile-no">0{i + 1}</span>
+                    </div>
+                    <h3>{w.title}</h3>
+                    <p>{w.text}</p>
+                  </SpotlightCard>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -240,9 +261,7 @@ export default function Home() {
       {/* ================= MARKETS ================= */}
       <section className="section markets-section">
         <div className="container">
-          <div className="section-head">
-            <span className="kicker">Markets We Serve</span>
-            <h2>India-anchored,<br />internationally relevant</h2>
+          <div className="section-head">            <h2>India-anchored,<br />internationally relevant</h2>
             <p>
               Practical sourcing, documentation clarity and market-aware execution across India and
               selected international markets.
@@ -269,9 +288,7 @@ export default function Home() {
       {/* ================= RFQ ================= */}
       <section className="section section--soft rfq" id="quote">
         <div className="container rfq__grid">
-          <Reveal className="rfq__info">
-            <span className="kicker">Need a Quote?</span>
-            <h2>Share your<br /><em>requirement.</em></h2>
+          <Reveal className="rfq__info">            <h2>Share your<br /><em>requirement.</em></h2>
             <p className="lead">
               Share your product, grade, quantity, destination and target timeline. Our team will
               respond with the most practical supply option available.

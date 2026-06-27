@@ -1,4 +1,4 @@
-// AZDEX Chemicals — Markets we serve
+// AZDEX Chemicals: Markets we serve
 
 export const markets = [
   {

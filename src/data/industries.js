@@ -1,4 +1,4 @@
-// AZDEX Chemicals — Industries we supply
+// AZDEX Chemicals: Industries we supply
 
 export const industries = [
   {

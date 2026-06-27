@@ -22,8 +22,8 @@
   right: -140px;
   width: 620px;
   height: 620px;
-  background: radial-gradient(circle, rgba(242, 184, 41, 0.16), transparent 60%);
-  filter: blur(16px);
+  background: radial-gradient(circle, rgba(242, 184, 41, 0.09), transparent 62%);
+  filter: blur(22px);
 }
 .page-hero__index {
   position: absolute;
@@ -52,7 +52,7 @@
   color: #fff;
   font-weight: 400;
   font-size: clamp(2.6rem, 6vw, 5rem);
-  line-height: 1;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   margin: 0;
 }

@@ -64,13 +64,16 @@ export function RevealHeading({ lines, className, delay = 0, as = 'h1', mount = 
   if (reduce) {
     return <Tag className={className}>{lines.map((l, i) => <span key={i} style={{ display: 'block' }}>{l}</span>)}</Tag>
   }
+  // Start fully below the (padded) clip box so the pre-reveal text never peeks,
+  // and pad the bottom of the clip generously so glyph descenders (y, p, g, q)
+  // are never sliced off once the line settles.
   const lineTrigger = mount
-    ? { initial: { y: '115%' }, animate: { y: '0%' } }
-    : { initial: { y: '115%' }, whileInView: { y: '0%' }, viewport: { once: true } }
+    ? { initial: { y: '130%' }, animate: { y: '0%' } }
+    : { initial: { y: '130%' }, whileInView: { y: '0%' }, viewport: { once: true } }
   return (
     <Tag className={className}>
       {lines.map((line, i) => (
-        <span key={i} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.08em' }}>
+        <span key={i} style={{ display: 'block', overflow: 'hidden', paddingBottom: '0.22em' }}>
           <motion.span
             style={{ display: 'block', willChange: 'transform' }}
             {...lineTrigger}

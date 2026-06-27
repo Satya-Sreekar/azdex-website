@@ -5,9 +5,7 @@ import './pages.css'
 export default function Terms() {
   return (
     <>
-      <PageHero
-        eyebrow="Legal"
-        title="Terms & Conditions"
+      <PageHero        title="Terms & Conditions"
         subtitle="The terms that apply to the use of this website and to enquiries made through it."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Terms & Conditions' }]}
       />

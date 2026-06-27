@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="container nav__inner">
-        <Link to="/" className="nav__brand" aria-label="AZDEX Chemicals — Home">
+        <Link to="/" className="nav__brand" aria-label="AZDEX Chemicals home">
           <img src={`${import.meta.env.BASE_URL}logo-full.svg`} alt="AZDEX Chemicals" className="nav__logo" />
         </Link>
 
@@ -87,7 +87,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile drawer — only mounted while open so the off-canvas panel never
+      {/* Mobile drawer: only mounted while open so the off-canvas panel never
           extends the document width (prevents horizontal scroll on mobile). */}
       {open && (
         <>

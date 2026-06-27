@@ -1,4 +1,4 @@
-// AZDEX Chemicals — Product catalogue
+// AZDEX Chemicals: Product catalogue
 // Copy sourced verbatim from the AZDEX Website Copy Pack.
 
 export const products = [

@@ -20,9 +20,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Product"
-        title={product.name}
+      <PageHero        title={product.name}
         formula={product.formula}
         subtitle={product.heroSub}
         crumbs={[
@@ -41,9 +39,7 @@ export default function ProductDetail() {
           {/* ---- Main column ---- */}
           <div className="product-main">
             {/* Overview */}
-            <div className="product-block">
-              <span className="eyebrow"><Beaker style={{ width: 15, height: 15 }} /> Overview</span>
-              <h2>Overview</h2>
+            <div className="product-block">              <h2>Overview</h2>
               <p className="lead">{product.overview}</p>
             </div>
 
@@ -168,9 +164,7 @@ export default function ProductDetail() {
       {/* Enquiry */}
       <section className="section section--tint" id="enquiry">
         <div className="container product-enquiry">
-          <Reveal className="product-enquiry__info">
-            <span className="eyebrow">Request a Quote</span>
-            <h2>Enquire about {product.name}</h2>
+          <Reveal className="product-enquiry__info">            <h2>Enquire about {product.name}</h2>
             <p className="lead">{product.enquiry}</p>
           </Reveal>
           <Reveal delay={0.12} className="product-enquiry__form card">

@@ -9,9 +9,7 @@ import './pages.css'
 export default function Products() {
   return (
     <>
-      <PageHero
-        eyebrow="Products"
-        title="Industrial Raw Materials"
+      <PageHero        title="Industrial Raw Materials"
         subtitle="Industrial raw materials supplied for manufacturing, processing and distribution requirements across India and selected international markets."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Products' }]}
       >
@@ -22,12 +20,10 @@ export default function Products() {
 
       <section className="section">
         <div className="container">
-          <Reveal className="section-head center">
-            <span className="eyebrow">Core Range</span>
-            <h2>Explore AZDEX's core product range</h2>
+          <Reveal className="section-head center">            <h2>Explore AZDEX's core product range</h2>
             <p>
               Dedicated pages for specifications, applications, packaging, industry relevance and
-              enquiry support — so buyers can self-select by material.
+              enquiry support, so buyers can self-select by material.
             </p>
           </Reveal>
           <Stagger className="grid cols-3">
@@ -43,7 +39,7 @@ export default function Products() {
       <section className="section section--soft">
         <div className="container">
           <div className="cta-band">
-            <h2>Not sure which grade you need?</h2>
+            <h2>Not sure which <em>grade</em> you need?</h2>
             <p>
               Tell us your application, quantity and destination. Our team will review the most
               practical supply option and confirm specifications at quotation stage.

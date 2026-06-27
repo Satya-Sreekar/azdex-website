@@ -7,20 +7,16 @@ import './pages.css'
 export default function Contact() {
   return (
     <>
-      <PageHero
-        eyebrow="Contact AZDEX"
-        title="Contact AZDEX"
+      <PageHero        title="Contact AZDEX"
         subtitle="Speak with our team about product availability, specifications, quantities and destination requirements."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Contact Us' }]}
       />
 
       <section className="section">
         <div className="container contact-grid">
-          {/* Left — contact info */}
+          {/* Left: contact info */}
           <Reveal className="contact-info">
-            <div>
-              <span className="eyebrow">Get in touch</span>
-              <h2 style={{ fontSize: '1.7rem' }}>Send an enquiry</h2>
+            <div>              <h2 style={{ fontSize: '1.7rem' }}>Send an enquiry</h2>
               <p className="muted">
                 Whether your requirement is routine procurement or a new sourcing enquiry, share your
                 product, grade, quantity and destination, and our team will respond with the most
@@ -42,7 +38,7 @@ export default function Contact() {
               <div>
                 <strong>Markets</strong>
                 <span className="muted" style={{ fontSize: '0.95rem' }}>
-                  India &amp; selected international markets — Middle East, Africa and Southeast Asia.
+                  India and selected international markets: Middle East, Africa and Southeast Asia.
                 </span>
               </div>
             </div>
@@ -55,7 +51,7 @@ export default function Contact() {
             </div>
           </Reveal>
 
-          {/* Right — full enquiry form */}
+          {/* Right: full enquiry form */}
           <Reveal delay={0.12} className="contact-form-card">
             <EnquiryForm variant="full" title="Send an Enquiry" />
           </Reveal>

@@ -8,9 +8,7 @@ import './pages.css'
 export default function Markets() {
   return (
     <>
-      <PageHero
-        eyebrow="Markets We Serve"
-        title="Markets We Serve"
+      <PageHero        title="Markets We Serve"
         subtitle="AZDEX supports industrial buyers across India and selected international markets through practical sourcing, documentation clarity and market-aware execution."
         crumbs={[{ label: 'Home', to: '/' }, { label: 'Markets' }]}
       >
@@ -21,9 +19,7 @@ export default function Markets() {
 
       <section className="section">
         <div className="container">
-          <Reveal className="section-head">
-            <span className="eyebrow">Operating Relevance</span>
-            <h2>India-anchored, internationally relevant</h2>
+          <Reveal className="section-head">            <h2>India-anchored, internationally relevant</h2>
             <p>
               Our commercial focus is built around industrial-grade materials, responsive
               communication and supply options aligned to buyer requirements, destination needs and
@@ -66,7 +62,7 @@ export default function Markets() {
       <section className="section section--soft">
         <div className="container">
           <div className="cta-band">
-            <h2>Discuss your market requirement</h2>
+            <h2>Discuss your <em>market requirement</em></h2>
             <p>
               Share your product, quantity, destination and timeline, and our team will review the
               most practical commercial option.
