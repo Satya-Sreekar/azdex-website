@@ -1,0 +1,82 @@
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-900);
+  color: #fff;
+  padding: 150px 0 90px;
+}
+
+.page-hero__bg { position: absolute; inset: 0; pointer-events: none; }
+.page-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 90% 90% at 20% 0%, #000 30%, transparent 75%);
+}
+.page-hero__aurora {
+  position: absolute;
+  top: -220px;
+  right: -140px;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(242, 184, 41, 0.16), transparent 60%);
+  filter: blur(16px);
+}
+.page-hero__index {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(10rem, 24vw, 22rem);
+  line-height: 1;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-hero__inner { position: relative; z-index: 1; max-width: 900px; }
+.page-hero__crumbs { margin-bottom: 30px; }
+.breadcrumb__seg { display: inline-flex; align-items: center; gap: 10px; }
+.page-hero__crumbs a { color: #8195b4; }
+
+.page-hero__eyebrow { color: var(--gold-400); }
+.page-hero__eyebrow::before { background: var(--gold-400); }
+
+.page-hero__title-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.page-hero__title {
+  color: #fff;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.page-hero__formula {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gold-400);
+  background: rgba(242, 184, 41, 0.1);
+  border: 1px solid rgba(242, 184, 41, 0.3);
+  padding: 9px 16px;
+  border-radius: 999px;
+}
+
+.page-hero__sub {
+  color: #aebbd2;
+  font-size: 1.2rem;
+  line-height: 1.65;
+  margin: 24px 0 0;
+  max-width: 680px;
+}
+.page-hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+
+@media (max-width: 680px) {
+  .page-hero { padding: 116px 0 64px; }
+  .page-hero__sub { font-size: 1.06rem; }
+}
