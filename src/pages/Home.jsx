@@ -1,26 +1,25 @@
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion } from 'framer-motion'
 import EnquiryForm from '../components/EnquiryForm.jsx'
 import { products } from '../data/products.js'
 import { industries } from '../data/industries.js'
 import { markets } from '../data/markets.js'
 import {
   ArrowRight, ArrowUpRight, Search, Handshake, MapPin, Layers,
+  Beaker, Globe, FileText, MessageCircle,
 } from '../components/Icons.jsx'
 import {
   Reveal, RevealHeading, Stagger, StaggerItem, CountUp, Marquee, Magnetic,
 } from '../components/motion.jsx'
-import Lightfall from '../components/reactbits/Lightfall.jsx'
 import ShinyText from '../components/reactbits/ShinyText.jsx'
 import SpotlightCard from '../components/reactbits/SpotlightCard.jsx'
 import './Home.css'
 
-const trust = ['Bulk Supply', 'Industrial Grades', 'Documentation Support', 'India & International']
-
-// Gold/brass palette so the falling streaks read as a brand accent on the navy hero.
-// Module-scope constant keeps the array reference stable across renders, so Lightfall's
-// effect doesn't tear down and rebuild the WebGL context.
-const lightfallColors = ['#f7c84f', '#f2b829', '#fadd91']
+const capabilities = [
+  { icon: Beaker, label: 'Industrial Chemical Sourcing' },
+  { icon: Globe, label: 'Multi-Origin Procurement' },
+  { icon: FileText, label: 'Documentation Support' },
+  { icon: MessageCircle, label: 'Responsive Quotations' },
+]
 
 const stats = [
   { to: 5, suffix: '', label: 'Core raw materials' },
@@ -36,42 +35,12 @@ const why = [
 ]
 
 export default function Home() {
-  const reduce = useReducedMotion()
   return (
     <>
       {/* ================= HERO ================= */}
       <section className="hero">
-        <div className="hero__bg" aria-hidden="true">
-          {!reduce && (
-            <div className="hero__lightfall">
-              <Lightfall
-                colors={lightfallColors}
-                backgroundColor="#16294f"
-                speed={0.5}
-                streakCount={2}
-                streakWidth={0.9}
-                streakLength={1.2}
-                glow={0.8}
-                density={0.5}
-                twinkle={0.6}
-                zoom={2.6}
-                backgroundGlow={0.4}
-                opacity={1}
-                mouseInteraction={false}
-              />
-            </div>
-          )}
-        </div>
-
-        {/* Oversized brand mark, half-cropped off the right edge */}
-        <div className="hero__mark" aria-hidden="true">
-          <motion.img
-            src={`${import.meta.env.BASE_URL}logo-icon-on-dark.svg`}
-            alt=""
-            className="hero__mark-img"
-            animate={reduce ? undefined : { rotate: 360 }}
-            transition={reduce ? undefined : { duration: 110, ease: 'linear', repeat: Infinity }}
-          />
+        <div className="hero__bg hero__photo" aria-hidden="true">
+          <img src={`${import.meta.env.BASE_URL}hero-plant.jpg`} alt="" />
         </div>
 
         <div className="container hero__inner">
@@ -102,10 +71,11 @@ export default function Home() {
             <Link to="/products" className="btn btn-ghost-light btn-lg">View Products</Link>
           </Reveal>
 
-          <Reveal mount delay={0.55} className="hero__trust">
-            {trust.map((t, i) => (
-              <span key={t} className="hero__trust-item">
-                <span className="hero__trust-no">0{i + 1}</span>{t}
+          <Reveal mount delay={0.55} className="hero__caps">
+            {capabilities.map((c) => (
+              <span key={c.label} className="hero__cap">
+                <span className="hero__cap-icon"><c.icon /></span>
+                {c.label}
               </span>
             ))}
           </Reveal>

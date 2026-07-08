@@ -88,6 +88,10 @@ export const Drop = (p) => (
   <svg {...base} {...p}><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z" /></svg>
 )
 
+export const MessageCircle = (p) => (
+  <svg {...base} {...p}><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg>
+)
+
 export const Menu = (p) => (
   <svg {...base} {...p}><path d="M3 6h18M3 12h18M3 18h18" /></svg>
 )

@@ -1,6 +1,6 @@
 import PageHero from '../components/PageHero.jsx'
 import EnquiryForm from '../components/EnquiryForm.jsx'
-import { Mail, Clock, Globe } from '../components/Icons.jsx'
+import { Mail, Phone, Clock, Globe } from '../components/Icons.jsx'
 import { Reveal } from '../components/motion.jsx'
 import './pages.css'
 
@@ -30,6 +30,15 @@ export default function Contact() {
                 <strong>Email Us</strong>
                 <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a>
                 <a href="mailto:info@azdex.co.in">info@azdex.co.in</a>
+              </div>
+            </div>
+
+            <div className="contact-channel">
+              <span className="contact-channel__icon"><Phone /></span>
+              <div>
+                <strong>Call or WhatsApp</strong>
+                <a href="tel:+917207817760">+91 72078 17760</a>
+                <span className="muted" style={{ fontSize: '0.95rem' }}>Mobile / WhatsApp</span>
               </div>
             </div>
 

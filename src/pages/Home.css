@@ -28,52 +28,22 @@
 }
 .hero__bg { position: absolute; inset: 0; pointer-events: none; }
 
-/* React Bits Lightfall layer (restrained tuning). z-index:0 establishes a stacking
-   context so the WebGL canvas stays behind .hero__inner (z-index:1). The mask keeps
-   the sparse gold streaks a top-down accent that fades out before the ticker, and the
-   low opacity keeps them a whisper so the headline clearly leads. */
-.hero__lightfall {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.36;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 90%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 90%);
-}
-
-/* Oversized brand mark: ~60% visible, the rest cropped off the right.
-   Height is viewport-relative (capped) so the full circle always fits
-   vertically and the top/bottom petals are never clipped. The left edge
-   fades out so the portion behind the headline stays subtle. */
-.hero__mark {
-  position: absolute;
-  top: 46%;
-  right: 3%;
-  height: clamp(240px, 42vh, 430px);
-  width: auto;
-  aspect-ratio: 434 / 392;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(-50%);
-  /* Blend the mark's light into the scene (not a solid graphic on top) and feather every
-     edge with a radial mask, so there is no perceptible image boundary or crop line — the
-     sunburst reads as ambient light in the hero rather than a floating object. */
-  mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0, 0, 0, 0.5) 52%, transparent 72%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0, 0, 0, 0.5) 52%, transparent 72%);
-  animation: heroMarkIn 1.6s var(--ease) 0.35s forwards;
-}
-.hero__mark-img {
+/* Refinery photo fills the hero; kept right-weighted so the towers sit clear of the
+   headline. The overlay darkens left-to-right for text contrast and fades the bottom
+   into navy so the ticker border reads cleanly against it. */
+.hero__photo img {
   width: 100%;
   height: 100%;
-  display: block;
-  filter: blur(0.7px) drop-shadow(0 0 60px rgba(242, 184, 41, 0.2));
+  object-fit: cover;
+  object-position: 60% 52%; /* golden tower cluster on the right half, foreground wall out of frame */
 }
-@keyframes heroMarkIn {
-  from { opacity: 0; transform: translateY(-50%) scale(0.96); }
-  to { opacity: 0.45; transform: translateY(-50%) scale(1); }
+.hero__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 20, 38, 0.96) 0%, rgba(11, 20, 38, 0.86) 34%, rgba(15, 29, 58, 0.45) 62%, rgba(15, 29, 58, 0.15) 100%),
+    linear-gradient(180deg, rgba(11, 20, 38, 0.35) 0%, rgba(11, 20, 38, 0) 30%, rgba(11, 20, 38, 0) 62%, rgba(11, 20, 38, 0.8) 100%);
 }
 
 /* Grow to fill the space between navbar and ticker, then center the content
@@ -89,6 +59,9 @@
   padding-top: 56px;
   padding-bottom: 64px;
 }
+/* Full-bleed hero: content spans the viewport (gutter only). Scoped under .hero to
+   out-rank .container regardless of stylesheet order. */
+.hero .hero__inner { max-width: none; }
 
 .hero__title {
   color: #fff;
@@ -112,26 +85,39 @@
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
 
-.hero__trust {
+.hero__caps {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* spread the 01–04 items edge-to-edge across the row */
-  gap: 22px 30px;
+  gap: 22px 58px; /* compact left-aligned badge group, per reference mock */
   margin-top: 54px;
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
-.hero__trust-item {
+.hero__cap {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 13px;
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
+  line-height: 1.45;
   text-transform: uppercase;
   color: #c4cfe2;
+  max-width: 205px; /* incl. icon: breaks each label onto two tight lines, matching the mock */
 }
-.hero__trust-no { color: var(--gold-400); font-size: 0.66rem; }
+.hero__cap-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(11, 20, 38, 0.45);
+  color: var(--gold-400);
+}
+.hero__cap-icon svg { width: 21px; height: 21px; }
 
 /* Ticker */
 .hero__ticker {
@@ -464,10 +450,9 @@
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
-  .hero__mark { display: none; }
   /* Once the long labels start to wrap, left-align so wrapped lines don't get
      awkward edge-to-edge gaps from space-between. */
-  .hero__trust { justify-content: flex-start; gap: 18px 26px; }
+  .hero__caps { justify-content: flex-start; gap: 18px 26px; }
   .positioning__grid { grid-template-columns: 1fr; gap: 48px; }
   .ledger { grid-template-columns: repeat(2, 1fr); }
   .why__feature { grid-column: span 12; }
@@ -490,24 +475,24 @@
      so the longer "Request a Quote" label still fits without clipping. */
   .hero__actions { gap: 12px; margin-top: 28px; }
   .hero__actions .btn-lg { flex: 1 1 0; padding: 15px 14px; font-size: 0.68rem; letter-spacing: 0.06em; }
-  /* 2×2 stat grid: gold number stacked over its label so cells keep even height
+  /* 2×2 grid: circled icon stacked over its label so cells keep even height
      even when a label wraps ("Documentation Support"). Reads as a deliberate
      feature strip instead of ragged wrapped text. */
-  .hero__trust {
+  .hero__caps {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px 16px;
     margin-top: 32px;
     padding-top: 24px;
   }
-  .hero__trust-item {
+  .hero__cap {
     flex-direction: column;
     align-items: flex-start;
-    gap: 7px;
-    font-size: 0.72rem;
-    line-height: 1.3;
+    gap: 10px;
+    font-size: 0.7rem;
   }
-  .hero__trust-no { font-size: 0.82rem; font-weight: 600; }
+  .hero__cap-icon { width: 40px; height: 40px; }
+  .hero__cap-icon svg { width: 18px; height: 18px; }
   .pindex-head { flex-direction: column; align-items: flex-start; gap: 18px; }
   .pindex__row { grid-template-columns: auto 1fr; gap: 14px 18px; padding: 26px 0; }
   .pindex__row:hover { padding-left: 0; padding-right: 0; background: transparent; }

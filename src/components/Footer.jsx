@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { products } from '../data/products.js'
-import { Mail } from './Icons.jsx'
+import { Mail, Phone } from './Icons.jsx'
 import './Footer.css'
 
 const company = [
@@ -17,13 +17,14 @@ export default function Footer() {
       <div className="container footer__main">
         <div className="footer__brand">
           <div className="footer__logo-wrap">
-            <img src={`${import.meta.env.BASE_URL}logo-full-on-dark.svg`} alt="AZDEX Chemicals" className="footer__logo" />
+            <img src={`${import.meta.env.BASE_URL}logo-full.svg`} alt="AZDEX Chemicals" className="footer__logo" />
           </div>
           <p className="footer__brandline">Industrial Commodities &amp; Raw Materials</p>
           <p className="footer__tagline">Connecting Global Supply with Industrial Buyers.</p>
           <div className="footer__emails">
             <a href="mailto:sales@azdex.co.in"><Mail /> sales@azdex.co.in</a>
             <a href="mailto:info@azdex.co.in"><Mail /> info@azdex.co.in</a>
+            <a href="tel:+917207817760"><Phone /> +91 72078 17760 (Mobile / WhatsApp)</a>
           </div>
         </div>
 

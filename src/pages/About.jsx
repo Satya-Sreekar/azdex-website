@@ -58,6 +58,23 @@ export default function About() {
               particular focus on industrial inputs such as Technical Grade Urea, Soda Ash, Caustic
               Soda, PVC Resin and Melamine.
             </p>
+            <div className="profile-band">
+              <span className="profile-band__icon"><FileText /></span>
+              <div>
+                <h4>Download Our Company Profile</h4>
+                <p>Explore our products, sourcing capabilities and industrial procurement approach.</p>
+                <div className="profile-band__actions">
+                  <a
+                    href={`${import.meta.env.BASE_URL}azdex-company-profile.pdf`}
+                    download
+                    className="btn btn-primary"
+                  >
+                    Download PDF
+                  </a>
+                  <Link to="/contact" className="btn btn-outline">Contact Us</Link>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="aside-card">
             <h4>What We Supply</h4>

@@ -142,6 +142,9 @@ export default function ProductDetail() {
           {/* ---- Sticky aside ---- */}
           <aside className="product-aside">
             <div className="product-aside__card">
+              {product.image && (
+                <img src={product.image} alt={product.name} className="product-aside__photo" loading="lazy" />
+              )}
               <span className="product-aside__badge">{product.formula}</span>
               <h3>{product.name}</h3>
               <p>{product.enquiry}</p>
