@@ -10,10 +10,11 @@ const company = [
   { to: '/contact', label: 'Contact Us' },
 ]
 
+const marketsList = ['India', 'Middle East', 'Africa', 'Southeast Asia']
+
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Columns */}
       <div className="container footer__main">
         <div className="footer__brand">
           <div className="footer__logo-wrap">
@@ -21,11 +22,6 @@ export default function Footer() {
           </div>
           <p className="footer__brandline">Industrial Commodities &amp; Raw Materials</p>
           <p className="footer__tagline">Connecting Global Supply with Industrial Buyers.</p>
-          <div className="footer__emails">
-            <a href="mailto:sales@azdex.co.in"><Mail /> sales@azdex.co.in</a>
-            <a href="mailto:info@azdex.co.in"><Mail /> info@azdex.co.in</a>
-            <a href="tel:+917207817760"><Phone /> +91 72078 17760 (Mobile / WhatsApp)</a>
-          </div>
         </div>
 
         <div className="footer__col">
@@ -44,14 +40,21 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer__col footer__col--wide">
+        <div className="footer__col">
           <span className="footer__col-label">Markets</span>
           <ul>
-            <li>India</li>
-            <li>Middle East</li>
-            <li>Africa</li>
-            <li>Southeast Asia</li>
+            {marketsList.map((m) => <li key={m}>{m}</li>)}
           </ul>
+        </div>
+
+        <div className="footer__col footer__col--contact">
+          <span className="footer__col-label">Get in touch</span>
+          <div className="footer__chips">
+            <a href="mailto:sales@azdex.co.in"><Mail /> sales@azdex.co.in</a>
+            <a href="mailto:info@azdex.co.in"><Mail /> info@azdex.co.in</a>
+            <a href="tel:+917207817760"><Phone /> +91 72078 17760</a>
+          </div>
+          <span className="footer__note">Mobile / WhatsApp</span>
         </div>
       </div>
 

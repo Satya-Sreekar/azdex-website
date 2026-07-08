@@ -1,8 +1,10 @@
 // AZDEX Chemicals: Industries we supply
 
+// `image` = file under public/industries/ (brand-tinted on the Industries page)
 export const industries = [
   {
     name: 'Plywood & MDF',
+    image: 'plywood-mdf.jpg',
     homeSummary:
       'Technical Grade Urea and Melamine for resin, adhesive and board-related applications.',
     detail:
@@ -11,6 +13,7 @@ export const industries = [
   },
   {
     name: 'Glass Manufacturing',
+    image: 'glass.jpg',
     homeSummary:
       'Soda Ash for flat glass, container glass and downstream alkali requirements.',
     detail:
@@ -19,6 +22,7 @@ export const industries = [
   },
   {
     name: 'Detergents & Cleaning Products',
+    image: 'detergents.jpg',
     homeSummary:
       'Soda Ash and Caustic Soda for alkalinity, grease removal and formulation support.',
     detail:
@@ -27,6 +31,7 @@ export const industries = [
   },
   {
     name: 'PVC & Plastics',
+    image: 'pvc-plastics.jpg',
     homeSummary:
       'PVC Resin for pipes, fittings, cables, profiles and downstream plastic processing.',
     detail:
@@ -35,6 +40,7 @@ export const industries = [
   },
   {
     name: 'Water Treatment',
+    image: 'water-treatment.jpg',
     homeSummary:
       'Caustic Soda and Soda Ash for pH control, alkalinity management and industrial water applications.',
     detail:
@@ -43,6 +49,7 @@ export const industries = [
   },
   {
     name: 'Chemical Manufacturing',
+    image: 'chemical.jpg',
     homeSummary:
       'Bulk raw materials and intermediates for processors, formulators and industrial buyers.',
     detail:
@@ -51,6 +58,7 @@ export const industries = [
   },
   {
     name: 'Textile & Paper',
+    image: 'textile-paper.jpg',
     homeSummary:
       'Caustic Soda for textile processing, bleaching, mercerising and pulp and paper operations.',
     detail:

@@ -27,10 +27,12 @@
    .container loads last and was zeroing the vertical padding). */
 .footer .footer__main {
   display: grid;
-  grid-template-columns: 1.7fr 1fr 1fr 1fr;
-  gap: 48px;
-  padding: 96px 40px 64px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.3fr;
+  gap: 44px;
+  padding: 80px 40px 56px;
+  align-items: start;
 }
+.footer__brand { max-width: 300px; }
 /* Light chip: the regular logo is navy-on-transparent and would vanish
    on the dark footer without it. */
 .footer__logo-wrap {
@@ -42,27 +44,38 @@
 }
 .footer__logo { height: 44px; width: auto; }
 .footer__brandline { color: #fff; font-family: var(--font-display); font-size: 1.1rem; margin: 0 0 6px; }
-.footer__tagline { color: #8294b3; margin-bottom: 26px; max-width: 320px; }
-.footer__emails { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-.footer__emails a {
+.footer__tagline { color: #8294b3; margin: 0; max-width: 300px; }
+
+/* Contact column: chips stretch to the column width so the block reads as a tidy stack */
+.footer__chips { display: flex; flex-direction: column; gap: 9px; align-items: stretch; }
+.footer__chips a {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  padding: 9px 15px;
+  padding: 9px 14px;
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.02);
   color: #c4cfe2;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   letter-spacing: 0.02em;
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
 }
-.footer__emails a svg { width: 16px; height: 16px; color: var(--gold-500); }
-.footer__emails a:hover {
+.footer__chips a svg { width: 16px; height: 16px; color: var(--gold-500); flex-shrink: 0; }
+.footer__chips a:hover {
   color: #fff;
   border-color: rgba(242, 184, 41, 0.4);
   background: rgba(242, 184, 41, 0.07);
+}
+.footer__note {
+  display: block;
+  margin-top: 11px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7b97;
 }
 
 .footer__col-label {
@@ -97,21 +110,19 @@
 .footer__legal a:hover { color: var(--gold-400); }
 .footer__dot { opacity: 0.5; }
 
-@media (max-width: 900px) {
-  .footer .footer__main { grid-template-columns: 1fr 1fr; gap: 40px 28px; padding: 72px 32px 48px; }
-  .footer__brand { grid-column: 1 / -1; }
-  .footer__cta { padding: 80px 0 72px; }
-}
-@media (max-width: 680px) {
-  .footer .footer__main { grid-template-columns: 1fr 1fr; gap: 32px 24px; padding: 56px 22px 36px; }
-  /* Markets was orphaned in the left cell of the 2-col grid. Span it full-width
-     and lay its markets in 2 cols so there's no dead space, then divider it off
-     from the Products/Company row above. */
-  .footer__col--wide {
-    grid-column: 1 / -1;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 28px;
+/* Brand spans the top; the four content columns sit in a 2×2 grid below it. */
+@media (max-width: 1040px) {
+  .footer .footer__main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+    padding: 72px 32px 48px;
   }
-  .footer__col--wide ul { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+  .footer__brand { grid-column: 1 / -1; max-width: none; }
+}
+/* Single column on phones: unbreakable email strings need the full width,
+   and the 2-col grid squeezes/clips them below ~400px. */
+@media (max-width: 560px) {
+  .footer .footer__main { grid-template-columns: 1fr; gap: 34px; padding: 56px 24px 40px; }
+  .footer__col ul { gap: 11px; }
   .footer__bottom-inner { justify-content: center; text-align: center; flex-direction: column; gap: 12px; padding: 24px 22px; }
 }

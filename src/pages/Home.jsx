@@ -8,7 +8,7 @@ import {
   Beaker, Globe, FileText, MessageCircle,
 } from '../components/Icons.jsx'
 import {
-  Reveal, RevealHeading, Stagger, StaggerItem, CountUp, Marquee, Magnetic,
+  Reveal, RevealHeading, Stagger, StaggerItem, CountUp, Marquee,
 } from '../components/motion.jsx'
 import ShinyText from '../components/reactbits/ShinyText.jsx'
 import SpotlightCard from '../components/reactbits/SpotlightCard.jsx'
@@ -62,16 +62,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal mount delay={0.45} className="hero__actions">
-            <Magnetic>
-              <Link to="/contact" className="btn btn-primary btn-lg">
-                Request a Quote <ArrowUpRight />
-              </Link>
-            </Magnetic>
-            <Link to="/products" className="btn btn-ghost-light btn-lg">View Products</Link>
-          </Reveal>
-
-          <Reveal mount delay={0.55} className="hero__caps">
+          <Reveal mount delay={0.45} className="hero__caps">
             {capabilities.map((c) => (
               <span key={c.label} className="hero__cap">
                 <span className="hero__cap-icon"><c.icon /></span>
@@ -86,7 +77,11 @@ export default function Home() {
           <Marquee speed={34}>
             {products.map((p) => (
               <span className="ticker__item" key={p.slug}>
-                <span className="ticker__star">✦</span>
+                <img
+                  className="ticker__star"
+                  src={`${import.meta.env.BASE_URL}logo-icon-on-dark.svg`}
+                  alt=""
+                />
                 {p.name}
                 <span className="ticker__formula">{p.formula}</span>
               </span>
@@ -231,11 +226,16 @@ export default function Home() {
       {/* ================= MARKETS ================= */}
       <section className="section markets-section">
         <div className="container">
-          <div className="section-head">            <h2>India-anchored,<br />internationally relevant</h2>
-            <p>
-              Practical sourcing, documentation clarity and market-aware execution across India and
-              selected international markets.
-            </p>
+          <div className="section-head markets-head">
+            <div>
+              <h2>India-anchored,<br />internationally relevant</h2>
+              <p>
+                Practical sourcing, documentation clarity and market-aware execution across India and
+                selected international markets.
+              </p>
+            </div>
+            {/* Gold gradient showing through a logo-shaped window */}
+            <div className="markets-mark" aria-hidden="true" />
           </div>
 
           <Stagger className="markets-row">

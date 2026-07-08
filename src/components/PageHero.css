@@ -25,6 +25,18 @@
   background: radial-gradient(circle, rgba(242, 184, 41, 0.09), transparent 62%);
   filter: blur(22px);
 }
+/* Brand mark watermark: oversized, cropped off the top-right corner, faint enough
+   to read as architecture rather than a pasted logo. */
+.page-hero__bg::after {
+  content: '';
+  position: absolute;
+  top: -22%;
+  right: -7%;
+  width: min(44%, 520px);
+  aspect-ratio: 434 / 392;
+  background: url('../assets/mark-gold.svg') no-repeat center / contain;
+  opacity: 0.055;
+}
 .page-hero__index {
   position: absolute;
   right: 4%;

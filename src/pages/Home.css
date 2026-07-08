@@ -83,8 +83,6 @@
   margin: 0;
 }
 
-.hero__actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
-
 .hero__caps {
   display: flex;
   flex-wrap: wrap;
@@ -139,7 +137,7 @@
   color: #e7edf6;
   white-space: nowrap;
 }
-.ticker__star { color: var(--gold-500); font-size: 0.9rem; }
+.ticker__star { width: 16px; height: auto; opacity: 0.9; }
 .ticker__formula {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -339,6 +337,17 @@
   width: 560px; height: 560px;
   background: radial-gradient(circle, rgba(242, 184, 41, 0.055), transparent 68%);
 }
+/* Brand mark watermark cropped off the bottom-right, opposite the glow. */
+.why::after {
+  content: '';
+  position: absolute;
+  right: -90px;
+  bottom: -110px;
+  width: min(34vw, 420px);
+  aspect-ratio: 434 / 392;
+  background: url('../assets/mark-gold.svg') no-repeat center / contain;
+  opacity: 0.05;
+}
 .why__inner { position: relative; z-index: 1; }
 .why__bento {
   display: grid;
@@ -395,6 +404,25 @@
 .why__tile p { color: #9fb0cd; font-size: 0.92rem; margin: 0; }
 
 /* ============ MARKETS ============ */
+/* Section head with the logo-shaped photo window on the right */
+.markets-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: none;
+}
+.markets-head > div { max-width: 560px; }
+.markets-head > div p { margin: 0; }
+.markets-mark {
+  flex-shrink: 0;
+  width: clamp(150px, 17vw, 215px);
+  aspect-ratio: 434 / 392;
+  background: linear-gradient(135deg, var(--gold-400), var(--brass) 60%, var(--gold-500));
+  -webkit-mask: url('../assets/mark-white.svg') no-repeat center / contain;
+  mask: url('../assets/mark-white.svg') no-repeat center / contain;
+}
+
 .markets-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -461,6 +489,8 @@
   .rfq__grid { grid-template-columns: 1fr; gap: 44px; }
 }
 @media (max-width: 680px) {
+  /* Not enough width to sit beside the heading without crowding it. */
+  .markets-mark { display: none; }
   /* Content is taller than the viewport here, so centering it inside the 100svh
      hero clips both ends (kicker off the top, trust row off the bottom). Top-align
      and let the hero grow naturally instead. */
@@ -471,10 +501,6 @@
   .hero__sub { margin-top: 20px; }
   /* Smaller + dimmer so the title leads; still comfortably readable. */
   .hero__sub p { font-size: 0.92rem; line-height: 1.6; color: #94a3bd; }
-  /* Inline, equal-width buttons (flex:1 splits the row evenly); trimmed padding/text
-     so the longer "Request a Quote" label still fits without clipping. */
-  .hero__actions { gap: 12px; margin-top: 28px; }
-  .hero__actions .btn-lg { flex: 1 1 0; padding: 15px 14px; font-size: 0.68rem; letter-spacing: 0.06em; }
   /* 2×2 grid: circled icon stacked over its label so cells keep even height
      even when a label wraps ("Documentation Support"). Reads as a deliberate
      feature strip instead of ragged wrapped text. */

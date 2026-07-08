@@ -200,6 +200,19 @@ p { margin: 0 0 1rem; }
 }
 .section--navy .section-head p { color: #9fb0cd; }
 .section-head.center p { margin-left: auto; margin-right: auto; }
+/* Small brand-mark ornament under centered section heads. */
+.section-head.center::after {
+  content: '';
+  display: block;
+  width: 26px;
+  height: 24px;
+  margin: 22px auto 0;
+  background: url('./assets/mark-full.svg') no-repeat center / contain;
+}
+.section--navy .section-head.center::after {
+  background-image: url('./assets/mark-gold.svg');
+  opacity: 0.85;
+}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -287,6 +300,7 @@ p { margin: 0 0 1rem; }
 .cols-2 { grid-template-columns: repeat(2, 1fr); }
 .cols-3 { grid-template-columns: repeat(3, 1fr); }
 .cols-4 { grid-template-columns: repeat(4, 1fr); }
+.cols-6 { grid-template-columns: repeat(6, 1fr); }
 
 /* ---------- Hairline rule ---------- */
 .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
@@ -379,12 +393,14 @@ p { margin: 0 0 1rem; }
   .section { padding: 96px 0; }
   .cols-4 { grid-template-columns: repeat(2, 1fr); }
   .cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cols-6 { grid-template-columns: repeat(3, 1fr); }
   .section-head { margin-bottom: 48px; }
 }
 @media (max-width: 680px) {
   :root { --gutter: 22px; }
   .section { padding: 72px 0; }
   .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
+  .cols-6 { grid-template-columns: repeat(2, 1fr); }
   .field-row { grid-template-columns: 1fr; }
   .lead { font-size: 1.08rem; }
 }
