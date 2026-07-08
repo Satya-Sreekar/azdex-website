@@ -66,7 +66,7 @@ export default function About() {
                 <div className="profile-band__actions">
                   <a
                     href={`${import.meta.env.BASE_URL}azdex-company-profile.pdf`}
-                    download
+                    download="AZDEX Chemicals Company Profile.pdf"
                     className="btn btn-primary"
                   >
                     Download PDF
