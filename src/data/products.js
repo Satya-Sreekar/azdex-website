@@ -1,13 +1,16 @@
-// AZDEX Chemicals: Product catalogue
+﻿// AZDEX Chemicals: Product catalogue
 // Copy sourced verbatim from the AZDEX Website Copy Pack.
 
 // Product photos live in public/products/<slug>.jpg (Unsplash, free commercial license).
+// <slug>-bg.jpg is the translucent page-background image (application/industry themed).
 const photo = (slug) => `${import.meta.env.BASE_URL}products/${slug}.jpg`
+const bgPhoto = (slug) => `${import.meta.env.BASE_URL}products/${slug}-bg.jpg`
 
 export const products = [
   {
     slug: 'technical-grade-urea',
     image: photo('technical-grade-urea'),
+    bgImage: bgPhoto('technical-grade-urea'),
     name: 'Technical Grade Urea',
     formula: 'CO(NH₂)₂',
     cardSummary:
@@ -51,6 +54,7 @@ export const products = [
   {
     slug: 'soda-ash',
     image: photo('soda-ash'),
+    bgImage: bgPhoto('soda-ash'),
     name: 'Soda Ash',
     formula: 'Na₂CO₃',
     cardSummary:
@@ -99,6 +103,7 @@ export const products = [
   {
     slug: 'caustic-soda',
     image: photo('caustic-soda'),
+    bgImage: bgPhoto('caustic-soda'),
     name: 'Caustic Soda',
     formula: 'NaOH',
     cardSummary:
@@ -144,6 +149,7 @@ export const products = [
   {
     slug: 'pvc-resin',
     image: photo('pvc-resin'),
+    bgImage: bgPhoto('pvc-resin'),
     name: 'PVC Resin',
     formula: '(C₂H₃Cl)ₙ',
     cardSummary:
@@ -183,6 +189,7 @@ export const products = [
   {
     slug: 'melamine',
     image: photo('melamine'),
+    bgImage: bgPhoto('melamine'),
     name: 'Melamine',
     formula: 'C₃H₆N₆',
     cardSummary:

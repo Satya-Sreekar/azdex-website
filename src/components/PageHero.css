@@ -7,6 +7,17 @@
 }
 
 .page-hero__bg { position: absolute; inset: 0; pointer-events: none; }
+/* Translucent themed photo behind the hero copy. */
+.page-hero__photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  filter: grayscale(55%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
 .page-hero__grid {
   position: absolute;
   inset: 0;

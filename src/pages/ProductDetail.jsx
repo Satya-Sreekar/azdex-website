@@ -21,6 +21,7 @@ export default function ProductDetail() {
   return (
     <>
       <PageHero        title={product.name}
+        bgImage={product.bgImage}
         formula={product.formula}
         subtitle={product.heroSub}
         crumbs={[

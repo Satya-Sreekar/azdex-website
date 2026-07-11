@@ -4,10 +4,13 @@ import './PageHero.css'
 
 // Reusable editorial hero for interior pages.
 // `crumbs` = array of { label, to? }; last item renders as current.
-export default function PageHero({ eyebrow, title, subtitle, crumbs = [], children, formula, index }) {
+export default function PageHero({ eyebrow, title, subtitle, crumbs = [], children, formula, index, bgImage }) {
   return (
     <section className="page-hero">
       <div className="page-hero__bg" aria-hidden="true">
+        {bgImage && (
+          <span className="page-hero__photo" style={{ backgroundImage: `url(${bgImage})` }} />
+        )}
         <span className="page-hero__grid" />
         <span className="page-hero__aurora" />
       </div>
