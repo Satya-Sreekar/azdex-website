@@ -65,8 +65,19 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
 
       <div className="field-row">
         <div className="field">
+          <label htmlFor="ef-name">Name</label>
+          <input id="ef-name" name="name" required value={values.name || ''} onChange={onChange} placeholder="Your full name" />
+        </div>
+        <div className="field">
           <label htmlFor="ef-company">Company</label>
           <input id="ef-company" name="company" value={values.company || ''} onChange={onChange} placeholder="Company name" />
+        </div>
+      </div>
+
+      <div className="field-row">
+        <div className="field">
+          <label htmlFor="ef-email">Email</label>
+          <input id="ef-email" name="email" type="email" required value={values.email || ''} onChange={onChange} placeholder="you@company.com" />
         </div>
         <div className="field">
           <label htmlFor="ef-phone">Phone / WhatsApp</label>
