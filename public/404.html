@@ -6,9 +6,9 @@
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages: https://github.com/rafgraph/spa-github-pages
       // Redirects deep links to index.html while preserving the route, so the
-      // React Router SPA can render it. pathSegmentsToKeep = 1 keeps the
-      // "/azdex-website" project-page base segment.
-      var pathSegmentsToKeep = 1;
+      // React Router SPA can render it. 0 segments: served from the custom
+      // domain root (azdex.co.in), no project-page base path.
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
