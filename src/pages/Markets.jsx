@@ -79,6 +79,14 @@ export default function Markets() {
     })
   }
 
+  // Clicking a lit country jumps the wheel to that country's market.
+  const onMapClick = (e) => {
+    const id = e.target.closest('path')?.id
+    if (!id) return
+    const idx = markets.findIndex((m) => (m.codes || []).includes(id))
+    if (idx !== -1) setPos(idx)
+  }
+
   const view = [pos - 1, pos, pos + 1] // virtual positions: prev / current / next
 
   return (
@@ -118,6 +126,7 @@ export default function Markets() {
               aria-label={`World map highlighting ${at(pos).name}`}
               onMouseMove={onMapMove}
               onMouseLeave={() => setTip(null)}
+              onClick={onMapClick}
               dangerouslySetInnerHTML={{ __html: worldMap }}
             />
             {tip && (

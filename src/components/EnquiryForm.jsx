@@ -13,11 +13,31 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
   const onChange = (e) =>
     setValues((v) => ({ ...v, [e.target.name]: e.target.value }))
 
-  const onSubmit = (e) => {
+  const [error, setError] = useState('')
+  const [sending, setSending] = useState(false)
+
+  const onSubmit = async (e) => {
     e.preventDefault()
-    // No backend in this build; capture intent and confirm to the user.
-    // A production deployment would POST these values to an enquiry endpoint.
-    setSubmitted(true)
+    setSending(true)
+    setError('')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'a0c83852-08f8-4563-97dc-6c2dff7c26b0',
+          subject: 'New AZDEX enquiry',
+          ...values,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) setSubmitted(true)
+      else setError(data.message || 'Something went wrong. Please try again.')
+    } catch {
+      setError('Network error. Please try again or email sales@azdex.co.in.')
+    } finally {
+      setSending(false)
+    }
   }
 
   if (submitted) {
@@ -112,9 +132,11 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
         <textarea id="ef-message" name="message" value={values.message || ''} onChange={onChange} placeholder="Tell us your requirement, target timeline and any specifications." />
       </div>
 
-      <button type="submit" className="btn btn-primary btn-lg enquiry-form__submit">
-        Request a Quote <ArrowRight />
+      <button type="submit" className="btn btn-primary btn-lg enquiry-form__submit" disabled={sending}>
+        {sending ? 'Sending…' : <>Request a Quote <ArrowRight /></>}
       </button>
+
+      {error && <p className="form-note" style={{ color: '#c0392b' }}>{error}</p>}
 
       <p className="form-note">
         By submitting this form, you agree that AZDEX may use the information you provide to respond

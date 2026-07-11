@@ -3,6 +3,7 @@ import EnquiryForm from '../components/EnquiryForm.jsx'
 import { products } from '../data/products.js'
 import { industries } from '../data/industries.js'
 import { markets } from '../data/markets.js'
+import markFull from '../assets/mark-full.svg'
 import {
   ArrowRight, ArrowUpRight, Search, Handshake, MapPin, Layers,
   Beaker, Globe, FileText, MessageCircle,
@@ -234,8 +235,8 @@ export default function Home() {
                 selected international markets.
               </p>
             </div>
-            {/* Gold gradient showing through a logo-shaped window */}
-            <div className="markets-mark" aria-hidden="true" />
+            {/* Classic navy + gold logo mark */}
+            <img className="markets-mark" src={markFull} alt="" aria-hidden="true" />
           </div>
 
           <Stagger className="markets-row">
