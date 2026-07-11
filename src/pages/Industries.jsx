@@ -30,27 +30,6 @@ export default function Industries() {
         </Link>
       </PageHero>
 
-      <section className="section why-trust">
-        <div className="container">
-          <Reveal className="section-head center">            <h2>Why Procurement Teams Trust AZDEX</h2>
-            <p>
-              A focused supply partner combining material clarity, multi-origin sourcing and
-              documentation support across the industries we serve.
-            </p>
-          </Reveal>
-
-          <Stagger className="feature-grid cols-6" gap={0.05}>
-            {whyTrust.map((f) => (
-              <StaggerItem key={f.title} className="feature">
-                <span className="feature__icon"><f.icon /></span>
-                <h3>{f.title}</h3>
-                <p>{f.text}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
       <section className="section section--soft">
         <div className="container">
           <Reveal className="section-head">            <h2>Recognise your use case</h2>
@@ -93,6 +72,27 @@ export default function Industries() {
                 Request a Quote <ArrowUpRight />
               </Link>
             </StaggerItem>
+          </Stagger>
+        </div>
+      </section>
+
+      <section className="section why-trust">
+        <div className="container">
+          <Reveal className="section-head center">            <h2>Why Procurement Teams Trust AZDEX</h2>
+            <p>
+              A focused supply partner combining material clarity, multi-origin sourcing and
+              documentation support across the industries we serve.
+            </p>
+          </Reveal>
+
+          <Stagger className="feature-grid cols-6" gap={0.05}>
+            {whyTrust.map((f) => (
+              <StaggerItem key={f.title} className="feature">
+                <span className="feature__icon"><f.icon /></span>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </StaggerItem>
+            ))}
           </Stagger>
         </div>
       </section>
