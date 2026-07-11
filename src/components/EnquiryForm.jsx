@@ -65,30 +65,19 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
 
       <div className="field-row">
         <div className="field">
-          <label htmlFor="ef-name">Name</label>
-          <input id="ef-name" name="name" required value={values.name || ''} onChange={onChange} placeholder="Your full name" />
-        </div>
-        <div className="field">
           <label htmlFor="ef-company">Company</label>
           <input id="ef-company" name="company" value={values.company || ''} onChange={onChange} placeholder="Company name" />
         </div>
-      </div>
-
-      <div className="field-row">
-        <div className="field">
-          <label htmlFor="ef-email">Email</label>
-          <input id="ef-email" name="email" type="email" required value={values.email || ''} onChange={onChange} placeholder="you@company.com" />
-        </div>
         <div className="field">
           <label htmlFor="ef-phone">Phone / WhatsApp</label>
-          <input id="ef-phone" name="phone" value={values.phone || ''} onChange={onChange} placeholder="+91 00000 00000" />
+          <input id="ef-phone" name="phone" required value={values.phone || ''} onChange={onChange} placeholder="+91 00000 00000" />
         </div>
       </div>
 
       <div className="field-row">
         <div className="field">
           <label htmlFor="ef-product">{isFull ? 'Product Required' : 'Product'}</label>
-          <select id="ef-product" name="product" value={values.product || ''} onChange={onChange}>
+          <select id="ef-product" name="product" required value={values.product || ''} onChange={onChange}>
             <option value="">Select a product</option>
             {productNames.map((n) => (
               <option key={n} value={n}>{n}</option>
@@ -104,7 +93,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
         ) : (
           <div className="field">
             <label htmlFor="ef-qty">Quantity</label>
-            <input id="ef-qty" name="quantity" value={values.quantity || ''} onChange={onChange} placeholder="e.g. 25 MT / month" />
+            <input id="ef-qty" name="quantity" required value={values.quantity || ''} onChange={onChange} placeholder="e.g. 25 MT / month" />
           </div>
         )}
       </div>
@@ -113,17 +102,17 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
         <div className="field-row">
           <div className="field">
             <label htmlFor="ef-monthly">Monthly Quantity</label>
-            <input id="ef-monthly" name="quantity" value={values.quantity || ''} onChange={onChange} placeholder="e.g. 25 MT / month" />
+            <input id="ef-monthly" name="quantity" required value={values.quantity || ''} onChange={onChange} placeholder="e.g. 25 MT / month" />
           </div>
           <div className="field">
             <label htmlFor="ef-dest">Destination Port / City</label>
-            <input id="ef-dest" name="destination" value={values.destination || ''} onChange={onChange} placeholder="Port or city" />
+            <input id="ef-dest" name="destination" required value={values.destination || ''} onChange={onChange} placeholder="Port or city" />
           </div>
         </div>
       ) : (
         <div className="field">
           <label htmlFor="ef-dest">Destination</label>
-          <input id="ef-dest" name="destination" value={values.destination || ''} onChange={onChange} placeholder="Destination port or city" />
+          <input id="ef-dest" name="destination" required value={values.destination || ''} onChange={onChange} placeholder="Destination port or city" />
         </div>
       )}
 
