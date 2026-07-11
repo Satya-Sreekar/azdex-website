@@ -25,7 +25,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: 'a0c83852-08f8-4563-97dc-6c2dff7c26b0',
+          access_key: 'a08c7450-019b-4e98-9aa4-f31f0f230439',
           subject: 'New AZDEX enquiry',
           ...values,
         }),
