@@ -49,16 +49,16 @@
   --gold-100: var(--gold-soft);
   --gold-600: var(--brass);
   --white: #ffffff;
-  --radius-sm: 8px;
+  --radius-sm: 0.5rem;
 
   /* Layout */
-  --container: 1280px;
-  --gutter: 40px;
-  --radius: 6px;
-  --radius-lg: 14px;
-  --shadow-sm: 0 1px 2px rgba(11, 20, 38, 0.05), 0 2px 8px rgba(11, 20, 38, 0.04);
-  --shadow-md: 0 12px 34px rgba(11, 20, 38, 0.09);
-  --shadow-lg: 0 30px 80px rgba(11, 20, 38, 0.16);
+  --container: 80rem;
+  --gutter: 2.5rem;
+  --radius: 0.375rem;
+  --radius-lg: 0.875rem;
+  --shadow-sm: 0 1px 2px rgba(11, 20, 38, 0.05), 0 2px 0.5rem rgba(11, 20, 38, 0.04);
+  --shadow-md: 0 0.75rem 2.125rem rgba(11, 20, 38, 0.09);
+  --shadow-lg: 0 1.875rem 5rem rgba(11, 20, 38, 0.16);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -98,13 +98,21 @@ html {
   overflow-x: clip;
 }
 
+/* Fluid root scale: the design is tuned on a 1440p-wide viewport. All sizing is
+   in rem, so scaling the root shrinks the whole design proportionally on
+   1080p-class screens instead of rendering it oversized.
+   14px @ ≤1280w → 15px @ 1920w → 16px @ 2560w (caps at 17px on ultrawides). */
+@media (min-width: 1025px) {
+  html { font-size: clamp(14px, 12px + 0.15625vw, 17px); }
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
-  font-size: 16px;
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
@@ -128,9 +136,9 @@ a { color: inherit; text-decoration: none; }
 ul { margin: 0; padding: 0; }
 
 .app-shell { display: flex; flex-direction: column; min-height: 100vh; }
-/* Reserve the fixed navbar's height (72px under 560px). */
-.app-shell > main { flex: 1; padding-top: 84px; }
-@media (max-width: 560px) { .app-shell > main { padding-top: 72px; } }
+/* Reserve the fixed navbar's height (72px-equivalent under 560px). */
+.app-shell > main { flex: 1; padding-top: 5.25rem; }
+@media (max-width: 560px) { .app-shell > main { padding-top: 4.5rem; } }
 
 /* ---------- Headings (Fraunces) ---------- */
 h1, h2, h3, h4 {
@@ -154,7 +162,7 @@ p { margin: 0 0 1rem; }
   padding: 0 var(--gutter);
 }
 
-.section { padding: 120px 0; position: relative; }
+.section { padding: 7.5rem 0; position: relative; }
 .section--soft { background: var(--paper-2); }
 .section--tint { background: var(--paper-2); }
 .section--navy {
@@ -167,19 +175,19 @@ p { margin: 0 0 1rem; }
 .eyebrow, .kicker {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 0.72rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--brass);
-  margin: 0 0 22px;
+  margin: 0 0 1.375rem;
 }
 .eyebrow::before, .kicker::before {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 0.5rem;
+  height: 0.5rem;
   background: var(--gold-500);
   transform: rotate(45deg);
   flex-shrink: 0;
@@ -188,14 +196,14 @@ p { margin: 0 0 1rem; }
 .section-head.center .eyebrow, .section-head.center .kicker { justify-content: center; }
 
 /* ---------- Section heading block ---------- */
-.section-head { max-width: 760px; margin-bottom: 64px; }
+.section-head { max-width: 47.5rem; margin-bottom: 4rem; }
 .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
 .section-head h2 { font-size: clamp(2.1rem, 4.6vw, 3.5rem); }
 .section-head p {
   color: var(--ink-soft);
   font-size: 1.1rem;
   line-height: 1.7;
-  margin: 18px 0 0;
+  margin: 1.125rem 0 0;
   max-width: 60ch;
 }
 .section--navy .section-head p { color: #9fb0cd; }
@@ -204,9 +212,9 @@ p { margin: 0 0 1rem; }
 .section-head.center::after {
   content: '';
   display: block;
-  width: 26px;
-  height: 24px;
-  margin: 22px auto 0;
+  width: 1.625rem;
+  height: 1.5rem;
+  margin: 1.375rem auto 0;
   background: url('./assets/mark-full.svg') no-repeat center / contain;
 }
 .section--navy .section-head.center::after {
@@ -220,14 +228,14 @@ p { margin: 0 0 1rem; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 0.75rem;
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1;
-  padding: 17px 26px;
+  padding: 1.0625rem 1.625rem;
   border-radius: var(--radius);
   border: var(--bw) solid transparent;
   cursor: pointer;
@@ -237,9 +245,9 @@ p { margin: 0 0 1rem; }
     background 0.3s var(--ease), transform 0.3s var(--ease);
   white-space: nowrap;
 }
-.btn svg { width: 16px; height: 16px; position: relative; z-index: 1; transition: transform 0.35s var(--ease); }
+.btn svg { width: 1rem; height: 1rem; position: relative; z-index: 1; transition: transform 0.35s var(--ease); }
 .btn > span, .btn { z-index: 1; }
-.btn:hover svg { transform: translateX(5px); }
+.btn:hover svg { transform: translateX(0.3125rem); }
 
 .btn-primary { background: var(--gold-500); color: var(--navy-900); }
 .btn-primary:hover { background: var(--gold-400); }
@@ -258,15 +266,15 @@ p { margin: 0 0 1rem; }
 .btn-ghost-light:hover { background: #fff; color: var(--navy-900); border-color: #fff; }
 
 .btn-block { width: 100%; }
-.btn-lg { padding: 19px 30px; font-size: 0.8rem; }
+.btn-lg { padding: 1.1875rem 1.875rem; font-size: 0.8rem; }
 
 /* ---------- Pills / tags ---------- */
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 8px 15px;
-  border-radius: 999px;
+  gap: 0.5625rem;
+  padding: 0.5rem 0.9375rem;
+  border-radius: 62.4375rem;
   background: var(--gold-soft);
   color: var(--brass);
   font-family: var(--font-mono);
@@ -277,7 +285,7 @@ p { margin: 0 0 1rem; }
 }
 .tag {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 0.375rem 0.75rem;
   border-radius: 4px;
   background: transparent;
   color: var(--ink-soft);
@@ -296,7 +304,7 @@ p { margin: 0 0 1rem; }
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 
-.grid { display: grid; gap: 28px; }
+.grid { display: grid; gap: 1.75rem; }
 .cols-2 { grid-template-columns: repeat(2, 1fr); }
 .cols-3 { grid-template-columns: repeat(3, 1fr); }
 .cols-4 { grid-template-columns: repeat(4, 1fr); }
@@ -311,7 +319,7 @@ p { margin: 0 0 1rem; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -323,7 +331,7 @@ p { margin: 0 0 1rem; }
 .breadcrumb .current { color: #cdd7e8; }
 
 /* ---------- Forms ---------- */
-.field { display: flex; flex-direction: column; gap: 8px; }
+.field { display: flex; flex-direction: column; gap: 0.5rem; }
 .field label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -335,20 +343,20 @@ p { margin: 0 0 1rem; }
   font-family: var(--font-body);
   font-size: 0.98rem;
   color: var(--ink);
-  padding: 14px 16px;
+  padding: 0.875rem 1rem;
   border: 1px solid var(--rule-strong);
   border-radius: var(--radius);
   background: var(--surface);
   transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
   width: 100%;
 }
-.field textarea { resize: vertical; min-height: 130px; }
+.field textarea { resize: vertical; min-height: 8.125rem; }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
   border-color: var(--navy-700);
   box-shadow: 0 0 0 3px rgba(22, 41, 79, 0.12);
 }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .form-note { font-size: 0.84rem; color: var(--muted); margin: 4px 0 0; line-height: 1.55; }
 .form-note a { color: var(--brass); font-weight: 600; }
 
@@ -375,7 +383,7 @@ p { margin: 0 0 1rem; }
   opacity: 0.5;
   pointer-events: none;
   user-select: none;
-  top: 40px;
+  top: 2.5rem;
   right: 4%;
   z-index: 0;
 }
@@ -389,16 +397,16 @@ p { margin: 0 0 1rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-  :root { --gutter: 32px; }
-  .section { padding: 96px 0; }
+  :root { --gutter: 2rem; }
+  .section { padding: 6rem 0; }
   .cols-4 { grid-template-columns: repeat(2, 1fr); }
   .cols-3 { grid-template-columns: repeat(2, 1fr); }
   .cols-6 { grid-template-columns: repeat(3, 1fr); }
-  .section-head { margin-bottom: 48px; }
+  .section-head { margin-bottom: 3rem; }
 }
 @media (max-width: 680px) {
-  :root { --gutter: 22px; }
-  .section { padding: 72px 0; }
+  :root { --gutter: 1.375rem; }
+  .section { padding: 4.5rem 0; }
   .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
   .cols-6 { grid-template-columns: repeat(2, 1fr); }
   .field-row { grid-template-columns: 1fr; }

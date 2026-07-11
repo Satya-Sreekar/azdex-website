@@ -133,7 +133,7 @@ export default function ProductDetail() {
               <div className="industries-served">
                 {product.industriesServed.map((ind) => (
                   <span key={ind} className="industries-served__item">
-                    <Factory style={{ width: 18, height: 18 }} /> {ind}
+                    <Factory style={{ width: '1.125rem', height: '1.125rem' }} /> {ind}
                   </span>
                 ))}
               </div>
@@ -159,7 +159,7 @@ export default function ProductDetail() {
 
             <Link to={`/products/${next.slug}`} className="product-aside__next">
               <span>Next product</span>
-              <strong>{next.name} <ArrowUpRight style={{ width: 16, height: 16 }} /></strong>
+              <strong>{next.name} <ArrowUpRight style={{ width: '1rem', height: '1rem' }} /></strong>
             </Link>
           </aside>
         </div>

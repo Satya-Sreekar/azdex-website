@@ -1,7 +1,7 @@
 .enquiry-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
 }
 
 .enquiry-form__title {
@@ -23,24 +23,24 @@
 .enquiry-form--done {
   align-items: flex-start;
   text-align: left;
-  padding: 8px 0;
+  padding: 0.5rem 0;
 }
 
 .enquiry-form__done-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   background: #ecf8f0;
   color: #1d7a44;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .enquiry-form__done-icon svg {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
 }
 
 .enquiry-form--done h3 {
@@ -50,7 +50,7 @@
 
 .enquiry-form--done p {
   color: var(--slate-500);
-  margin: 6px 0 16px;
+  margin: 0.375rem 0 1rem;
 }
 
 .enquiry-form--done a {

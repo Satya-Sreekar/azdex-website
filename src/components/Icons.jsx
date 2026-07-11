@@ -2,8 +2,8 @@
 // All icons inherit `currentColor` and a 24x24 viewBox.
 
 const base = {
-  width: 24,
-  height: 24,
+  width: '1.5rem',
+  height: '1.5rem',
   viewBox: '0 0 24 24',
   fill: 'none',
   stroke: 'currentColor',

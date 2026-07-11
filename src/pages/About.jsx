@@ -78,7 +78,7 @@ export default function About() {
           </div>
           <div className="aside-card">
             <h4>What We Supply</h4>
-            <p style={{ color: '#aebbd2', fontSize: '0.94rem', margin: '8px 0 4px' }}>
+            <p style={{ color: '#aebbd2', fontSize: '0.94rem', margin: '0.5rem 0 0.25rem' }}>
               Industrial raw materials used across manufacturing, processing and downstream
               conversion industries.
             </p>
@@ -87,7 +87,7 @@ export default function About() {
                 <li key={item}><Check /> {item}</li>
               ))}
             </ul>
-            <p style={{ color: '#8497b6', fontSize: '0.84rem', margin: '14px 0 0' }}>
+            <p style={{ color: '#8497b6', fontSize: '0.84rem', margin: '0.875rem 0 0' }}>
               With scope to support additional industrial commodities based on buyer requirements.
             </p>
           </div>

@@ -53,7 +53,7 @@ export default function Contact() {
             </div>
 
             <div className="contact-note">
-              <Clock style={{ width: 22, height: 22, color: 'var(--gold-400)', marginBottom: 8 }} />
+              <Clock style={{ width: '1.375rem', height: '1.375rem', color: 'var(--gold-400)', marginBottom: '0.5rem' }} />
               <strong>Need a faster response?</strong>
               Email us at <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a> with your product,
               quantity and destination requirement.
