@@ -152,8 +152,8 @@ export default function ProductDetail() {
               <a href="#enquiry" className="btn btn-primary btn-block">
                 Request a Quote <ArrowRight />
               </a>
-              <a href="mailto:sales@azdex.co.in" className="product-aside__email">
-                sales@azdex.co.in
+              <a href="mailto:info@azdex.co.in" className="product-aside__email">
+                info@azdex.co.in
               </a>
             </div>
 

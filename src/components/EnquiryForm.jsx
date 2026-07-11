@@ -34,7 +34,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
       if (data.success) setSubmitted(true)
       else setError(data.message || 'Something went wrong. Please try again.')
     } catch {
-      setError('Network error. Please try again or email sales@azdex.co.in.')
+      setError('Network error. Please try again or email info@azdex.co.in.')
     } finally {
       setSending(false)
     }
@@ -48,7 +48,7 @@ export default function EnquiryForm({ variant = 'full', presetProduct = '', titl
         <p>
           Our team will review your requirement and respond with the most practical supply option
           available. For a faster response you can also email{' '}
-          <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a> directly.
+          <a href="mailto:info@azdex.co.in">info@azdex.co.in</a> directly.
         </p>
         <button type="button" className="btn btn-outline" onClick={() => setSubmitted(false)}>
           Submit another enquiry

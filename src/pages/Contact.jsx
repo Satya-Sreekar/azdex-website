@@ -28,8 +28,8 @@ export default function Contact() {
               <span className="contact-channel__icon"><Mail /></span>
               <div>
                 <strong>Email Us</strong>
-                <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a>
                 <a href="mailto:info@azdex.co.in">info@azdex.co.in</a>
+                <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ export default function Contact() {
             <div className="contact-note">
               <Clock style={{ width: '1.375rem', height: '1.375rem', color: 'var(--gold-400)', marginBottom: '0.5rem' }} />
               <strong>Need a faster response?</strong>
-              Email us at <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a> with your product,
+              Email us at <a href="mailto:info@azdex.co.in">info@azdex.co.in</a> with your product,
               quantity and destination requirement.
             </div>
           </Reveal>

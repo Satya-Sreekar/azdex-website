@@ -266,7 +266,7 @@ export default function Home() {
             </p>
             <div className="rfq__contact">
               <span className="rfq__contact-label">Prefer email?</span>
-              <a href="mailto:sales@azdex.co.in">sales@azdex.co.in</a>
+              <a href="mailto:info@azdex.co.in">info@azdex.co.in</a>
             </div>
           </Reveal>
           <Reveal delay={0.12} className="rfq__form card">
