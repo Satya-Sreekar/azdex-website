@@ -26,6 +26,9 @@
   gap: 1.5rem;
 }
 
+/* Full-bleed bar: span the viewport so the logo aligns with the hero copy at one
+   gutter from the left, and the CTA button sits a gutter from the right. */
+.nav .nav__inner { max-width: none; padding-left: var(--gutter); padding-right: var(--gutter); }
 .nav__brand { display: flex; align-items: center; flex-shrink: 0; }
 .nav__logo { height: 2.75rem; width: auto; object-fit: contain; }
 
@@ -125,6 +128,8 @@
 
 /* ---------- Actions ---------- */
 .nav__actions { display: flex; align-items: center; gap: 0.875rem; flex-shrink: 0; }
+/* Desktop shows logo on the left, links on the right — the CTA only appears
+   once the links collapse into the drawer (tablet/mobile). */
 .nav__toggle {
   display: none;
   align-items: center;

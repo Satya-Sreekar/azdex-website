@@ -41,7 +41,7 @@ export const products = [
     packaging:
       '50 kg bags, subject to current packing availability and quotation stage confirmation.',
     origins:
-      'India and selected international origins, subject to availability, documentation and applicable trade requirements.',
+      'China, Oman, Turkey and selected international origins, subject to availability, documentation and applicable trade requirements.',
     industriesServed: [
       'Plywood & MDF',
       'Resin & Adhesives',
