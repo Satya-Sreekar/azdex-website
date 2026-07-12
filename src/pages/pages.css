@@ -79,6 +79,7 @@
 .feature p { margin: 0; color: var(--slate-500); font-size: 0.95rem; }
 
 /* Compact, centered cards for the 6-up "why trust" row */
+.why-trust .section-head { margin-bottom: 2rem; }
 .why-trust .feature { padding: 1.625rem 1.125rem; text-align: center; }
 .why-trust .feature__icon { margin: 0 auto 1rem; }
 .why-trust .feature h3 { font-size: 1.02rem; }
