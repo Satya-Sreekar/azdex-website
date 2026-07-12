@@ -48,8 +48,9 @@
 
 /* Grow to fill the space between navbar and ticker, then center the content
    block within it. Vertical padding only (longhand) so the container's
-   horizontal gutter is left intact. */
-.hero__inner {
+   horizontal gutter is left intact. Scoped under .hero to out-rank .container's
+   `padding: 0 var(--gutter)` shorthand regardless of stylesheet order. */
+.hero .hero__inner {
   position: relative;
   z-index: 1;
   flex: 1 0 auto;
@@ -58,10 +59,9 @@
   justify-content: center;
   padding-top: 3.5rem;
   padding-bottom: 4rem;
+  /* Full-bleed hero: content spans the viewport (gutter only). */
+  max-width: none;
 }
-/* Full-bleed hero: content spans the viewport (gutter only). Scoped under .hero to
-   out-rank .container regardless of stylesheet order. */
-.hero .hero__inner { max-width: none; }
 
 .hero__title {
   color: #fff;
@@ -492,7 +492,9 @@
   /* Content is taller than the viewport here, so centering it inside the 100svh
      hero clips both ends (kicker off the top, trust row off the bottom). Top-align
      and let the hero grow naturally instead. */
-  .hero__inner { justify-content: center; padding-top: 3rem; padding-bottom: 2.5rem; }
+  /* Extra top padding so the title clears the navbar on very narrow/short
+     screens (e.g. folded foldables); reclaimed from the caps gap below. */
+  .hero .hero__inner { justify-content: center; padding-top: 4.5rem; padding-bottom: 2rem; }
   /* line-height ≥1.14 so the italic descender in "buyers." clears the reveal
      mask's clip box (overflow:hidden + 0.22em pad in RevealHeading). */
   .hero__title { font-size: clamp(2.6rem, 12vw, 3.6rem); line-height: 1.14; }
@@ -506,8 +508,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem 1rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 0.75rem;
+    padding-top: 0.875rem;
   }
   .hero__cap {
     flex-direction: column;
