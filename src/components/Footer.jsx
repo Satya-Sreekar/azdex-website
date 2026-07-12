@@ -52,7 +52,7 @@ export default function Footer() {
           <div className="footer__chips">
             <a href="mailto:info@azdex.co.in"><Mail /> info@azdex.co.in</a>
             <a href="mailto:sales@azdex.co.in"><Mail /> sales@azdex.co.in</a>
-            <a href="tel:+917207817760"><Phone /> +91 72078 17760</a>
+            <a href="tel:+919885046449"><Phone /> +91 98850 46449</a>
           </div>
           <span className="footer__note">Mobile / WhatsApp</span>
         </div>

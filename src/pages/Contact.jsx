@@ -37,7 +37,7 @@ export default function Contact() {
               <span className="contact-channel__icon"><Phone /></span>
               <div>
                 <strong>Call or WhatsApp</strong>
-                <a href="tel:+917207817760">+91 72078 17760</a>
+                <a href="tel:+919885046449">+91 98850 46449</a>
                 <span className="muted" style={{ fontSize: '0.95rem' }}>Mobile / WhatsApp</span>
               </div>
             </div>
